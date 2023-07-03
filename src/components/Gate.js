@@ -11,9 +11,7 @@ const Gate = () => {
 				: 'color: linear-gradient(to bottom right,hsl(0, 100%, 50%),hsl(39, 100%, 50%),hsl(60, 100%, 50%),hsl(120, 100%, 25%),hsl(240, 100%, 55%),hsl(300, 100%, 25%))',
 		};
 	};
-	const handleClick = (e) => {
-		console.log('here');
-	};
+
 	return (
 		<div id='gate-main'>
 			<NavLink style={styleActiveLink} to={'/auth'}>
