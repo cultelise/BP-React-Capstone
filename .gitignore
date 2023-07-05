@@ -11,6 +11,9 @@
 # production
 /build
 
+credentials.json
+service-account-key.json
+
 # misc
 .DS_Store
 .env

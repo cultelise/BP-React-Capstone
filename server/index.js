@@ -5,12 +5,16 @@ const { sequelize } = require('./util/database');
 const { SERVER_PORT } = process.env;
 
 const { register, getAllUsers } = require('./controllers/auth');
+const { test, test2, uploadImage } = require('./controllers/test');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
+app.get('/test', test);
+app.get('/test2', test2);
+app.post('/test', uploadImage);
 app.get('/', getAllUsers);
 app.post('/', register);
 

@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { CONNECTION_STRING } = process.env;
+const { CONNECTION_STRING, DRIVE_API_KEY } = process.env;
 
 const Sequelize = require('sequelize');
 
@@ -13,4 +13,4 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 	},
 });
 
-module.exports = { sequelize };
+module.exports = { sequelize, key: DRIVE_API_KEY };
