@@ -91,6 +91,11 @@ video {
 	text-align: center;
 }
 
+img {
+	height: 500px;
+	width: 500px;
+}
+
 /* 
 #gate-main {
 	display: flex;

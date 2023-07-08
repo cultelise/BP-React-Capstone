@@ -27,6 +27,7 @@ module.exports = {
 		console.log('RESPONSE1', response.data);
 		res.status(200).send(response.data);
 	},
+
 	test2: async (req, res) => {
 		const folderId = '1MZMHH7bTrghUDDDBtWpwhqAG-3Wy_Fzu';
 
@@ -36,16 +37,17 @@ module.exports = {
 
 		const response = await drive.files.list(params);
 
-		console.log('RESPONSE1', response.data);
+		console.log('RESPONSE2', response.data);
 		res.status(200).send(response.data);
 	},
-	uploadImage: async (req, res) => {
-		const folderId = '1MZMHH7bTrghUDDDBtWpwhqAG-3Wy_Fzu'; // ID of the folder where you want to upload the image
-		const imageFilePath =
-			'/Users/elise/Desktop/Screenshot 2023-06-09 at 5.02.55 PM.png'; // Path to the image file on your local system
 
+	uploadImage: async (req, res) => {
+		const { file } = req;
+
+		const folderId = '1MZMHH7bTrghUDDDBtWpwhqAG-3Wy_Fzu'; // ID of the folder where you want to upload the image
+		const imageFilePath = file.path; // Path to the image file on your local system
 		const fileMetadata = {
-			name: 'my_image.jpg', // Name of the file in Google Drive
+			name: file.originalname, // Name of the file in Google Drive
 			parents: [folderId], // ID of the folder to upload the image into
 		};
 
@@ -60,7 +62,6 @@ module.exports = {
 				media: media,
 				fields: 'id',
 			});
-
 			console.log('Image uploaded successfully. File ID:', response.data.id);
 			console.log('Response Data:', response.data);
 			res.status(200).send(response.data);
