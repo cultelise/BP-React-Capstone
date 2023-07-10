@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Display = () => {
-	const [images, setImages] = useState([]);
+	const [garments, setGarments] = useState([]);
 
 	useEffect(() => {
 		// axios
 		// 	.get('http://localhost:4000/test')
 		// 	.then((res) => console.log(res.data));
-		axios
-			.get('http://localhost:4000/test2')
-			.then((res) => setImages(res.data.files));
+		axios.get('http://localhost:4000/garment').then((res) => {
+			setGarments(res.data);
+		});
+		// setImages(res.data.files));
 		// axios
 		// 	.post('http://localhost:4000/test')
 		// 	.then((res) => console.log(res.data));
@@ -18,14 +19,14 @@ const Display = () => {
 
 	return (
 		<div id='display'>
-			{images.map((image) => {
-				console.log(image);
-				console.log(`https://drive.google.com/uc?id=${image.id}`);
+			{garments.map((garment) => {
+				console.log(garment);
+				console.log(`https://drive.google.com/uc?id=${garment.imageId}`);
 				return (
 					<img
-						key={image.name}
+						key={garment.id}
 						className='image-card'
-						src={`https://drive.google.com/uc?id=${image.id}`}
+						src={`https://drive.google.com/uc?id=${garment.imageId}`}
 						alt=''
 					/>
 				);
