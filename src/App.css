@@ -131,3 +131,13 @@ img {
 .pyramid-icon:active {
 	color: blue;
 } */
+
+#display {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.image-card {
+	display: flex;
+	flex-direction: column;
+}

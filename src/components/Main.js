@@ -10,6 +10,7 @@ const Main = () => {
 	const handleReset = async () => {
 		const res = await axios.delete('http://localhost:4000/garment');
 		console.log(res);
+		setFormData({});
 	};
 
 	return (
@@ -18,7 +19,7 @@ const Main = () => {
 			<br />
 			<Form formData={formData} setFormData={setFormData} />
 			<br />
-			<Display />
+			<Display formData={formData} />
 			<button onClick={handleReset}>reset garment db</button>
 		</div>
 	);

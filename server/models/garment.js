@@ -9,7 +9,7 @@ module.exports = {
 			allowNull: false,
 			primaryKey: true,
 		},
-		type: DataTypes.STRING,
+		name: DataTypes.STRING,
 		style: DataTypes.STRING,
 		brand: DataTypes.STRING,
 		imageId: DataTypes.STRING,

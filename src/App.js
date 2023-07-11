@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
-import Gate from './components/Gate';
 import Auth from './components/Auth';
 import Main from './components/Main';
 import Header from './components/Header';
+import Article from './components/Article';
 
 function App() {
 	return (
@@ -14,6 +14,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Main />} />
 				<Route path='/auth' element={<Auth />} />
+				<Route path='/garment/:id' element={<Article />} />
 			</Routes>
 		</div>
 	);

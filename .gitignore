@@ -13,6 +13,7 @@
 
 credentials.json
 service-account-key.json
+/temp
 
 # misc
 .DS_Store

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const Form = ({ formData, setFormData }) => {
 	const [image, setImage] = useState('');
-	const [type, setType] = useState('');
+	const [name, setName] = useState('');
 	const [style, setStyle] = useState('');
 	const [brand, setBrand] = useState('');
 	const [tags, setTags] = useState([]);
@@ -26,7 +26,7 @@ const Form = ({ formData, setFormData }) => {
 		});
 
 		const formObj = {
-			type,
+			name,
 			style,
 			brand,
 			tags,
@@ -60,14 +60,14 @@ const Form = ({ formData, setFormData }) => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<label htmlFor='garment-type'>Type</label>
+			<label htmlFor='garment-name'>Name</label>
 			<input
 				type='text'
-				name='garment-type'
-				value={type}
-				placeholder='Enter garment type'
+				name='garment-name'
+				value={name}
+				placeholder='Enter garment name'
 				onChange={(evt) => {
-					setType(evt.target.value);
+					setName(evt.target.value);
 				}}
 			/>
 			<input

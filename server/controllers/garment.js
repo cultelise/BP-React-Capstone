@@ -7,13 +7,22 @@ module.exports = {
 
 		res.status(200).send(garments);
 	},
+	getGarment: async (req, res) => {
+		const { id } = req.params;
+		const garment = await Garment.findOne({
+			where: { id: id },
+		});
+
+		console.log('FETCHED GARMENT:', garment);
+		res.status(200).send(garment);
+	},
 	addGarment: async (req, res) => {
-		const { type, style, brand, tags, imageId } = req.body;
+		const { name, style, brand, tags, imageId } = req.body;
 		console.log('GARMENT:', req.body);
 
 		const garment = await Garment.create(
 			{
-				type,
+				name,
 				style,
 				brand,
 				imageId,

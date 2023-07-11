@@ -7,7 +7,11 @@ const multer = require('multer');
 
 const { register, getAllUsers } = require('./controllers/auth');
 const { test, test2, uploadImage } = require('./controllers/test');
-const { addGarment, getAllGarments } = require('./controllers/garment');
+const {
+	addGarment,
+	getAllGarments,
+	getGarment,
+} = require('./controllers/garment');
 const { getTags } = require('./controllers/tag');
 const { User } = require('./models/user');
 const { Tag } = require('./models/tag');
@@ -31,12 +35,17 @@ app.get('/', getAllUsers);
 app.post('/', register);
 
 app.get('/garment', getAllGarments);
+app.get('/garment/:id', getGarment);
 app.post('/garment', addGarment);
 app.delete('/garment', async (req, res) => {
-	const destroy = await Garment.destroy({
-		where: {},
-	});
-	res.send(200).send(destroy);
+	// const destroy = await Garment.destroy({
+	// 	where: {},
+	// });
+	// await Tag.destroy({
+	// 	where: {},
+	// });
+	await sequelize.drop();
+	res.send(200).send('drop successful');
 });
 
 app.get('/tag', getTags);

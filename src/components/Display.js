@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Card from './Card';
 
-const Display = () => {
+const Display = ({ formData }) => {
 	const [garments, setGarments] = useState([]);
 
 	useEffect(() => {
@@ -15,21 +16,12 @@ const Display = () => {
 		// axios
 		// 	.post('http://localhost:4000/test')
 		// 	.then((res) => console.log(res.data));
-	}, []);
+	}, [formData]);
 
 	return (
 		<div id='display'>
 			{garments.map((garment) => {
-				console.log(garment);
-				console.log(`https://drive.google.com/uc?id=${garment.imageId}`);
-				return (
-					<img
-						key={garment.id}
-						className='image-card'
-						src={`https://drive.google.com/uc?id=${garment.imageId}`}
-						alt=''
-					/>
-				);
+				return <Card key={garment.id} garment={garment} />;
 			})}
 		</div>
 	);
