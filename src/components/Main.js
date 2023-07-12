@@ -14,11 +14,12 @@ const Main = () => {
 
 	return (
 		<div id='main'>
+			<div id='main-title'>Full Catalog</div>
+			<br />
 			<SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
 			<br />
-			<br />
 			<Display searchInput={searchInput} />
-			<button onClick={handleReset}>reset garment db</button>
+			{/* <button onClick={handleReset}>reset garment db</button> */}
 		</div>
 	);
 };

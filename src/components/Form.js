@@ -6,8 +6,8 @@ const Form = () => {
 	const [images, setImages] = useState([]);
 	const [name, setName] = useState('');
 	const [style, setStyle] = useState('');
-	const [brand, setBrand] = useState('');
-	const [tags, setTags] = useState([]);
+	const [color, setColor] = useState('');
+	// const [tags, setTags] = useState([]);
 	const [submitted, setSubmitted] = useState(false);
 
 	const navigate = useNavigate();
@@ -51,11 +51,11 @@ const Form = () => {
 		const formObj = {
 			name,
 			style,
-			brand,
+			color,
 			tags: [
-				...tags,
+				// ...tags,
 				style.toLowerCase(),
-				brand.toLowerCase(),
+				color.toLowerCase(),
 				...name.split(' '),
 			],
 			photos: resArray,
@@ -71,14 +71,14 @@ const Form = () => {
 		navigate('/');
 	};
 
-	const handleTags = (evt) => {
-		let tags = evt.target.value.split(',');
+	// const handleTags = (evt) => {
+	// 	let tags = evt.target.value.split(',');
 
-		console.log(tags);
-		console.log(tags.map((tag) => tag.trim().toLowerCase()));
+	// 	console.log(tags);
+	// 	console.log(tags.map((tag) => tag.trim().toLowerCase()));
 
-		setTags(tags.map((tag) => tag.trim().toLowerCase()));
-	};
+	// 	setTags(tags.map((tag) => tag.trim().toLowerCase()));
+	// };
 
 	const handleImageChange = async (evt) => {
 		console.log(evt.target.files);
@@ -86,51 +86,69 @@ const Form = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor='garment-name'>Name</label>
-			<input
-				type='text'
-				name='garment-name'
-				value={name}
-				placeholder='Enter garment name'
-				onChange={(evt) => {
-					setName(evt.target.value);
-				}}
-			/>
-			<input
-				type='text'
-				name='garment-style'
-				value={style}
-				placeholder='Enter garment style'
-				onChange={(evt) => {
-					setStyle(evt.target.value);
-				}}
-			/>
-			<label htmlFor='brand'>Brand</label>
-			<input
-				type='text'
-				name='brand'
-				placeholder='Enter brand'
-				value={brand}
-				onChange={(evt) => setBrand(evt.target.value)}
-			/>
-			<label htmlFor='tags'>Tags</label>
-			<input
-				type='text'
-				name='tags'
-				onChange={handleTags}
-				placeholder='Enter tags separated by ","'
-			/>
-			<label htmlFor='image-upload'></label>
-			<input
-				type='file'
-				id='image-upload'
-				name='image-upload'
-				accept='image/png, image/jpeg'
-				onChange={handleImageChange}
-				multiple
-			/>
-			<button>Upload</button>
+		<form id='garment-form' onSubmit={handleSubmit}>
+			<div className='input-container'>
+				<label htmlFor='garment-name'>Name</label>
+				<input
+					className='garment-input'
+					type='text'
+					name='garment-name'
+					value={name}
+					placeholder="Levi's 511"
+					onChange={(evt) => {
+						setName(evt.target.value);
+					}}
+				/>
+			</div>
+			<div className='input-container'>
+				<label htmlFor='garment-style'>Style</label>
+				<input
+					className='garment-input'
+					type='text'
+					name='garment-style'
+					value={style}
+					placeholder='Winter, Casual, etc...'
+					onChange={(evt) => {
+						setStyle(evt.target.value);
+					}}
+				/>
+			</div>
+			<div className='input-container'>
+				<label htmlFor='garment-color'>Color</label>
+				<input
+					className='garment-input'
+					type='text'
+					name='garment-color'
+					id='garment-color'
+					placeholder='Dark Red'
+					value={color}
+					onChange={(evt) => setColor(evt.target.value)}
+				/>
+			</div>
+			{/* <div className='input-container'>
+				<label htmlFor='tags'>Tags</label>
+				<input
+					className='garment-input'
+					type='text'
+					name='tags'
+					id='tags'
+					placeholder='Favorite, Classic, Vintage'
+					onChange={handleTags}
+				/>
+			</div> */}
+			<div className='input-container'>
+				<label htmlFor='image-upload'></label>
+				<input
+					className='garment-input'
+					type='file'
+					id='image-upload'
+					name='image-upload'
+					accept='image/png, image/jpeg'
+					onChange={handleImageChange}
+					multiple
+				/>
+			</div>
+			<button id='garment-form-button'>Upload</button>
 		</form>
 	);
 };

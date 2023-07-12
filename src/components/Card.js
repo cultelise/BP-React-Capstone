@@ -20,6 +20,7 @@ const Card = ({ garment }) => {
 	};
 
 	const handleRightClass = () => {
+		console.log(active, images);
 		return active < images.length - 1 ? '' : 'hide';
 	};
 

@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
 	return (
 		<header>
-			<div id='title'>Elise's Closet</div>
+			<div id='title'>ELISE'S CLOSET</div>
 			<nav>
 				<ul id='header-links'>
 					<li>
 						<NavLink to={'/'}>Catalog</NavLink>
 					</li>
-					<li>
+					{/* <li>
 						<NavLink to={'auth'}>Auth</NavLink>
-					</li>
+					</li> */}
 					<li>
 						<NavLink to={'form'}>Form</NavLink>
 					</li>

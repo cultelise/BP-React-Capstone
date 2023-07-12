@@ -21,14 +21,14 @@ module.exports = {
 		res.status(200).send(garment);
 	},
 	addGarment: async (req, res) => {
-		const { name, style, brand, tags, photos } = req.body;
+		const { name, style, color, tags, photos } = req.body;
 		console.log('GARMENT:', req.body);
 
 		const garment = await Garment.create(
 			{
 				name,
 				style,
-				brand,
+				color,
 				tags: tags.map((tag) => {
 					return { name: tag };
 				}),

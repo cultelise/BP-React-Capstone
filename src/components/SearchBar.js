@@ -13,9 +13,9 @@ const SearchBar = ({ searchInput, setSearchInput }) => {
 			<label htmlFor='search'>
 				<input
 					type='text'
-					className='search'
+					id='search'
 					name='search'
-					placeholder='Search Catalog'
+					placeholder='Search'
 					value={input}
 					onChange={(e) => {
 						setInput(e.target.value);

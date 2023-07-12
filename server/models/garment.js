@@ -11,6 +11,6 @@ module.exports = {
 		},
 		name: DataTypes.STRING,
 		style: DataTypes.STRING,
-		brand: DataTypes.STRING,
+		color: DataTypes.STRING,
 	}),
 };
