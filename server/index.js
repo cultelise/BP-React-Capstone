@@ -16,6 +16,7 @@ const { getTags } = require('./controllers/tag');
 const { User } = require('./models/user');
 const { Tag } = require('./models/tag');
 const { Garment } = require('./models/garment');
+const { Photo } = require('./models/photo');
 
 const upload = multer({ dest: 'temp/' });
 
@@ -27,6 +28,7 @@ app.use(cors());
 const Garment_Tag = sequelize.define('Garment_Tag', {}, { timestamps: false });
 Garment.belongsToMany(Tag, { through: Garment_Tag });
 Tag.belongsToMany(Garment, { through: Garment_Tag });
+Garment.hasMany(Photo);
 
 app.get('/test', test);
 app.get('/test2', test2);
@@ -45,7 +47,7 @@ app.delete('/garment', async (req, res) => {
 	// 	where: {},
 	// });
 	await sequelize.drop();
-	res.send(200).send('drop successful');
+	// res.send(200).send('drop successful');
 });
 
 app.get('/tag', getTags);

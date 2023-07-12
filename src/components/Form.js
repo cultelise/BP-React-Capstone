@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const Form = ({ formData, setFormData }) => {
-	const [image, setImage] = useState('');
+	const [images, setImages] = useState([]);
 	const [name, setName] = useState('');
 	const [style, setStyle] = useState('');
 	const [brand, setBrand] = useState('');
@@ -13,24 +13,50 @@ const Form = ({ formData, setFormData }) => {
 		evt.preventDefault();
 
 		setSubmitted(true);
-		console.log(image);
+		console.log(images);
 
-		const imageData = new FormData();
+		const imageArr1 = [];
+		// const imageArr2 = []
 
-		imageData.append('file', image);
+		for (let i = 0; i < images.length; i++) {
+			console.log(images[i]);
+			imageArr1.push(images[i]);
+		}
 
-		const imageRes = await axios.post('http://localhost:4000/test', imageData, {
-			headers: {
-				'Content-Type': 'multipart/form-data',
-			},
-		});
+		console.log(imageArr1);
+
+		const resArray = await Promise.all(
+			imageArr1.map(async (image) => {
+				const imageData = new FormData();
+
+				imageData.append('file', image);
+
+				const imageRes = await axios.post(
+					'http://localhost:4000/test',
+					imageData,
+					{
+						headers: {
+							'Content-Type': 'multipart/form-data',
+						},
+					}
+				);
+				return imageRes.data.id;
+			})
+		);
+
+		console.log('RES ARRAY:', resArray);
 
 		const formObj = {
 			name,
 			style,
 			brand,
-			tags,
-			imageId: imageRes.data.id,
+			tags: [
+				...tags,
+				style.toLowerCase(),
+				brand.toLowerCase(),
+				...name.split(' '),
+			],
+			photos: resArray,
 		};
 
 		setFormData(formObj);
@@ -41,8 +67,6 @@ const Form = ({ formData, setFormData }) => {
 		);
 
 		console.log('garment response:', garmentRes);
-
-		console.log(URL.createObjectURL(image));
 	};
 
 	const handleTags = (evt) => {
@@ -54,8 +78,9 @@ const Form = ({ formData, setFormData }) => {
 		setTags(tags.map((tag) => tag.trim().toLowerCase()));
 	};
 
-	const handleImageChange = (evt) => {
-		setImage(evt.target.files[0]);
+	const handleImageChange = async (evt) => {
+		console.log(evt.target.files);
+		setImages(evt.target.files);
 	};
 
 	return (
@@ -102,6 +127,7 @@ const Form = ({ formData, setFormData }) => {
 				name='image-upload'
 				accept='image/png, image/jpeg'
 				onChange={handleImageChange}
+				multiple
 			/>
 			<button>Upload</button>
 			{/* {image && submitted ? (

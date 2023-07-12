@@ -92,7 +92,7 @@ video {
 }
 
 img {
-	height: 500px;
+	height: 600px;
 	width: 500px;
 }
 
@@ -140,4 +140,35 @@ img {
 .image-card {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+}
+
+.image-select {
+	display: flex;
+	align-items: center;
+}
+
+.image-button {
+	background-color: transparent;
+	border: none;
+}
+
+.image-button-left {
+	position: relative;
+	left: 35px;
+	z-index: 1;
+}
+
+.image-button-right {
+	position: relative;
+	right: 35px;
+	z-index: 1;
+}
+
+.arrow-icon {
+	font-size: 30px;
+}
+
+.hide {
+	color: transparent;
 }

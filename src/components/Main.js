@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const Main = () => {
 	const [formData, setFormData] = useState({});
+	const [searchInput, setSearchInput] = useState('');
 
 	const handleReset = async () => {
 		const res = await axios.delete('http://localhost:4000/garment');
@@ -15,11 +16,11 @@ const Main = () => {
 
 	return (
 		<div>
-			<SearchBar />
+			<SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
 			<br />
 			<Form formData={formData} setFormData={setFormData} />
 			<br />
-			<Display formData={formData} />
+			<Display formData={formData} searchInput={searchInput} />
 			<button onClick={handleReset}>reset garment db</button>
 		</div>
 	);

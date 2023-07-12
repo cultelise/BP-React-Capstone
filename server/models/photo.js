@@ -2,15 +2,13 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../util/database');
 
 module.exports = {
-	Garment: sequelize.define('garment', {
+	Photo: sequelize.define('photo', {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			allowNull: false,
 			primaryKey: true,
 		},
-		name: DataTypes.STRING,
-		style: DataTypes.STRING,
-		brand: DataTypes.STRING,
+		drive_id: DataTypes.STRING,
 	}),
 };
