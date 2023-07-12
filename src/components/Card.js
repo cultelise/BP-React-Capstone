@@ -58,7 +58,7 @@ const Card = ({ garment }) => {
 					</IconContext.Provider>
 				</button>
 			</div>
-			<div>{garment.name}</div>
+			<div className='garment-title'>{garment.name}</div>
 		</div>
 	);
 };

@@ -6,8 +6,6 @@ const SearchBar = ({ searchInput, setSearchInput }) => {
 		e.preventDefault();
 
 		setSearchInput(input.toLowerCase());
-
-		setInput('');
 	};
 
 	return (
@@ -17,7 +15,7 @@ const SearchBar = ({ searchInput, setSearchInput }) => {
 					type='text'
 					className='search'
 					name='search'
-					placeholder='Search Item'
+					placeholder='Search Catalog'
 					value={input}
 					onChange={(e) => {
 						setInput(e.target.value);

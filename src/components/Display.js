@@ -12,7 +12,7 @@ const Display = ({ formData, searchInput }) => {
 			setGarments(res.data);
 			setFiltered(res.data);
 		});
-	}, [formData]);
+	}, []);
 
 	useEffect(() => {
 		console.log('search', searchInput);

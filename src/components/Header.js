@@ -4,13 +4,17 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
 	return (
 		<header>
+			<div id='title'>Elise's Closet</div>
 			<nav>
-				<ul>
+				<ul id='header-links'>
 					<li>
-						<NavLink to={'/'}>Home</NavLink>
+						<NavLink to={'/'}>Catalog</NavLink>
 					</li>
 					<li>
 						<NavLink to={'auth'}>Auth</NavLink>
+					</li>
+					<li>
+						<NavLink to={'form'}>Form</NavLink>
 					</li>
 				</ul>
 			</nav>

@@ -1,13 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Form = ({ formData, setFormData }) => {
+const Form = () => {
 	const [images, setImages] = useState([]);
 	const [name, setName] = useState('');
 	const [style, setStyle] = useState('');
 	const [brand, setBrand] = useState('');
 	const [tags, setTags] = useState([]);
 	const [submitted, setSubmitted] = useState(false);
+
+	const navigate = useNavigate();
 
 	const handleSubmit = async (evt) => {
 		evt.preventDefault();
@@ -16,7 +19,6 @@ const Form = ({ formData, setFormData }) => {
 		console.log(images);
 
 		const imageArr1 = [];
-		// const imageArr2 = []
 
 		for (let i = 0; i < images.length; i++) {
 			console.log(images[i]);
@@ -59,14 +61,14 @@ const Form = ({ formData, setFormData }) => {
 			photos: resArray,
 		};
 
-		setFormData(formObj);
-
 		const garmentRes = await axios.post(
 			'http://localhost:4000/garment',
 			formObj
 		);
 
 		console.log('garment response:', garmentRes);
+
+		navigate('/');
 	};
 
 	const handleTags = (evt) => {
@@ -121,7 +123,6 @@ const Form = ({ formData, setFormData }) => {
 			/>
 			<label htmlFor='image-upload'></label>
 			<input
-				// value={image}
 				type='file'
 				id='image-upload'
 				name='image-upload'
@@ -130,9 +131,6 @@ const Form = ({ formData, setFormData }) => {
 				multiple
 			/>
 			<button>Upload</button>
-			{/* {image && submitted ? (
-				<img src={URL.createObjectURL(image)} alt='' />
-			) : undefined} */}
 		</form>
 	);
 };

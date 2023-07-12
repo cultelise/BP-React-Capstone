@@ -89,10 +89,42 @@ video {
 
 .App {
 	text-align: center;
+	margin: 0px 100px;
+}
+
+#title {
+	font-size: 80px;
+	margin-bottom: -20px;
+}
+
+nav {
+	font-size: 26px;
+	margin-bottom: -10px;
+}
+
+#header-links {
+	display: flex;
+	justify-content: space-around;
+	text-decoration: none;
+}
+
+li,
+ul {
+	list-style-type: none;
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
 }
 
 img {
-	height: 600px;
+	height: 700px;
 	width: 500px;
 }
 
@@ -132,6 +164,10 @@ img {
 	color: blue;
 } */
 
+#main {
+	margin: 20px;
+}
+
 #display {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -155,20 +191,28 @@ img {
 
 .image-button-left {
 	position: relative;
-	left: 35px;
+	left: 45px;
 	z-index: 1;
 }
 
 .image-button-right {
 	position: relative;
-	right: 35px;
+	right: 45px;
 	z-index: 1;
 }
 
 .arrow-icon {
-	font-size: 30px;
+	font-size: 40px;
+}
+
+.arrow-icon:hover {
+	cursor: pointer;
 }
 
 .hide {
 	color: transparent;
+}
+
+.garment-title {
+	font-size: 40px;
 }

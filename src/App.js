@@ -5,6 +5,7 @@ import Auth from './components/Auth';
 import Main from './components/Main';
 import Header from './components/Header';
 import Article from './components/Article';
+import Form from './components/Form';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<Route path='/' element={<Main />} />
 				<Route path='/auth' element={<Auth />} />
 				<Route path='/garment/:id' element={<Article />} />
+				<Route path='/form' element={<Form />} />
 			</Routes>
 		</div>
 	);
